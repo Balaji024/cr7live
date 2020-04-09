@@ -3,8 +3,7 @@ node {
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
-           https://github.com/Balaji024/cr7live.git
-        
+           checkout scm
     }
 
     stage('Build image') {
