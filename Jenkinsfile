@@ -1,4 +1,10 @@
 pipeline {
+    agent {
+        docker {
+            image 'tomcat' 
+             
+        }
+    }
 
     stages{
         stage('Git pull code') {
