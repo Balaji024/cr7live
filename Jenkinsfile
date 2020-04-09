@@ -2,14 +2,16 @@ pipeline {
 
     stages{
         stage('Git pull code') {
-
-            git 'https://github.com/balaji024/cr7live.git'
-
+            steps {
+              git 'https://github.com/balaji024/cr7live.git'
+            }
         }
 
         stage('Create Docker image') {
 
-            container('docker') {
+            steps {
+                
+                container('docker') {
 
                 withCredentials([[$class: 'UsernamePasswordMultiBinding',
 
@@ -38,7 +40,7 @@ pipeline {
 
         }
 
-      
+        }
               
     }
 }
