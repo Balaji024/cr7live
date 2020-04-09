@@ -10,7 +10,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("balaji024/cr7live")
+        app =  sudo docker.build("balaji024/cr7live")
     }
 
     stage('Test image') {
