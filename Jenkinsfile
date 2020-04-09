@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('Git pull code') {
 
-            git 'https://github.com/balaji024/Maven-Deploy.git'
+            git 'https://github.com/balaji024/cr7live.git'
 
         }
 
