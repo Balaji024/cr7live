@@ -6,7 +6,7 @@
 
   <groupId>cr7</groupId>
   <artifactId>cr7live</artifactId>
-  <version>1.4</version>
+  <version>1.5</version>
   <packaging>war</packaging>
 
   <name>cr7live Maven Webapp</name>
