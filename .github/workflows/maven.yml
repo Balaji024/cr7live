@@ -29,14 +29,12 @@ jobs:
       
     - name: Copy War
       run: cp ./target/*.war E:/IIS_Virtuals/cr7live/cr7live.war
-      shell: cmd
       
-       
     - name: Check file existence
       id: check_files
       uses: andstor/file-existence-action@v1
       with:
-        files: "./cr7live.war"
+        files: "E:/IIS_Virtuals/cr7live/cr7live.war"
 
     - name: File exists
       if: steps.check_files.outputs.files_exists == 'true'
