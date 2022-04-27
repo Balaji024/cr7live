@@ -28,10 +28,9 @@ jobs:
       shell: cmd
       
     - name: Copy War
-      uses: canastro/copy-action@0.0.2
-      with:
-       source: ./target/*.war
-       target: ./
+      run: cp ./target/*.war E:/IIS_Virtuals/cr7live/cr7live.war
+      shell: cmd
+      
        
     - name: Check file existence
       id: check_files
