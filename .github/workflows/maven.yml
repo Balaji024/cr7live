@@ -28,7 +28,9 @@ jobs:
       shell: cmd
       
     - name: Copy War
-      run: cp ./target/*.war E:/IIS_Virtuals/cr7live/cr7live.war
+      run: |
+         Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+         cp ./target/*.war E:/IIS_Virtuals/cr7live/cr7live.war
       
     - name: Check file existence
       id: check_files
