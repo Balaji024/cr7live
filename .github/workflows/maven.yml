@@ -29,7 +29,7 @@ jobs:
       
     - name: Copy War
       run: |
-         Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+         Unblock-File E:\GithubActions\actions-runner\_work\_temp\*.ps1
          cp ./target/*.war E:/IIS_Virtuals/cr7live/cr7live.war
       
     - name: Check file existence
