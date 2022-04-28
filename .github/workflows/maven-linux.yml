@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: Lindows
+    runs-on: Linux
     steps:
     
     - uses: actions/checkout@v3
@@ -28,7 +28,10 @@ jobs:
   deploy:
     runs-on: Linux
     steps:
-    
+      
+    - name: Stop Tomcat
+      run: /home/ec2-user/environment/apache-tomcat/apache-tomcat-8.5.78/bin/shutdown.sh
+      
     - name: Copy War
       run: cp ./target/*.war /home/ec2-user/environment/apache-tomcat/apache-tomcat-8.5.78/webapps/cr7live.war
       
@@ -41,12 +44,6 @@ jobs:
     - name: File exists
       if: steps.check_files.outputs.files_exists == 'true'
       run: echo "It exists !"
-      
-    - name: Stop Tomcat
-      run: /home/ec2-user/environment/apache-tomcat/apache-tomcat-8.5.78/bin/shutdown.sh
-      
-    - name: Copy War
-      run: cp ./target/*.war /home/ec2-user/environment/apache-tomcat/apache-tomcat-8.5.78/webapps/cr7live.war
       
     - name: Start Tomcat
       run: /home/ec2-user/environment/apache-tomcat/apache-tomcat-8.5.78/bin/startup.sh
