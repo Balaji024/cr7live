@@ -28,6 +28,8 @@ jobs:
 
   deploy:
     runs-on: Linux
+    if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
+    needs: [build]
     steps:
       
     - name: Stop Tomcat
