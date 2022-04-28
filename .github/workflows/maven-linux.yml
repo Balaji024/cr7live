@@ -33,7 +33,7 @@ jobs:
     steps:
       
     - name: Stop Tomcat
-      run: /home/ec2-user/environment/apache-tomcat/apache-tomcat-8.5.78/bin/shutdown.sh
+      run: sudo systemctl stop tomcat.service
       
     - name: Copy War
       run: cp ./target/*.war /home/ec2-user/environment/apache-tomcat/apache-tomcat-8.5.78/webapps/cr7live.war
@@ -46,7 +46,7 @@ jobs:
         allow_failure: true
 
     - name: Start Tomcat
-      run: /home/ec2-user/environment/apache-tomcat/apache-tomcat-8.5.78/bin/startup.sh
+      run: sudo systemctl stop tomcat.service
       
     - name: Smoke Test
       run: |
