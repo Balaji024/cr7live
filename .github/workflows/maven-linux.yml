@@ -33,7 +33,7 @@ jobs:
     steps:
       
     - name: Stop Tomcat
-      run: sudo systemctl stop tomcat.service
+      run: sudo systemctl stop tomcat.service && sleep 15
       
     - name: Copy War
       run: cp ./target/*.war /home/ec2-user/environment/apache-tomcat/apache-tomcat-8.5.78/webapps/cr7live.war
