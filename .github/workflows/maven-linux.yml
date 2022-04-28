@@ -23,7 +23,7 @@ jobs:
         cache: maven
     
     - name: Build with Maven
-      run:  /home/ec2-user/environment/apache-maven/apache-maven-3.8.5/bin/mvn -B package --file pom.xml
+      run:  /home/ec2-user/environment/apache-maven/apache-maven-3.8.5/bin/mvn -B clean package
       #run: id
 
   deploy:
@@ -46,7 +46,7 @@ jobs:
         allow_failure: true
 
     - name: Start Tomcat
-      run: sudo systemctl stop tomcat.service
+      run: sudo systemctl start tomcat.service
       
     - name: Smoke Test
       run: |
