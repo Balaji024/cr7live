@@ -46,7 +46,7 @@ jobs:
         allow_failure: true
 
     - name: Start Tomcat
-      run: sudo systemctl start tomcat.service
+      run: sudo systemctl start tomcat.service && sleep 10
       
     - name: Smoke Test
       run: |
