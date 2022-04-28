@@ -48,6 +48,18 @@ jobs:
     - name: Start Tomcat
       run: /home/ec2-user/environment/apache-tomcat/apache-tomcat-8.5.78/bin/startup.sh
       
+    - name: Smoke Test
+      run: |
+       response=$(curl -I http://localhost:8080/cr7live/ | grep HTTP | cut -d " " -f 2)
+       if [ "$response" == 200 ]
+       then 
+         echo "App is up and running"
+       else
+         echo "App id down"
+         exit 1	
+       fi
+      
+      
     
       
      
