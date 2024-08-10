@@ -28,25 +28,28 @@ jobs:
 
   deploy:
     runs-on: Linux
+    env:
+      targetPath: /opt/tomcat/webapps
+      warFileName: cr7live.war
     if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
     needs: [build]
     steps:
       
     - name: Stop Tomcat
-      run: sudo systemctl stop tomcat.service && sleep 15
+      run: sudo systemctl stop tomcat && sleep 15
       
     - name: Copy War
-      run: cp ./target/*.war /home/ec2-user/environment/apache-tomcat/apache-tomcat-8.5.78/webapps/cr7live.war
+      run: cp ./target/*.war $targetPath/$warFileName
       
     - name: is file copied ?
       id: check_files
       uses: andstor/file-existence-action@v1
       with:
-        files: "/home/ec2-user/environment/apache-tomcat/apache-tomcat-8.5.78/webapps/cr7live.war"
+        files: $targetPath/$warFileName
         allow_failure: true
 
     - name: Start Tomcat
-      run: sudo systemctl start tomcat.service && sleep 10
+      run: sudo systemctl start tomcat && sleep 10
       
     - name: Smoke Test
       run: |
